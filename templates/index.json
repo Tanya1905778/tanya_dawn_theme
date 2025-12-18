@@ -60,24 +60,10 @@
       "settings": {
         "title": "Make a good choice."
       }
-    },
-    "collection_list_grid_PHHECD": {
-      "type": "collection-list-grid",
-      "name": "Collection List Grid",
-      "settings": {
-        "title": "GET STARTED",
-        "collection_list": [
-          "trousers-pants-copy",
-          "backpacks",
-          "best-seller",
-          "shoes-copy"
-        ]
-      }
     }
   },
   "order": [
     "section_four_iJ6pPd",
-    "block_image_aj8QN6",
-    "collection_list_grid_PHHECD"
+    "block_image_aj8QN6"
   ]
 }
