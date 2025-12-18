@@ -1,0 +1,49 @@
+<div class="top-announcement-bar">
+  {{ section.settings.message }}
+</div>
+<style>
+.top-announcement-bar {
+  background-color: {{ section.settings.bg_color }};
+  color: {{ section.settings.text_color }};
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 500;
+}
+</style>
+{% schema %}
+{
+  "name": "Top Announcement Bar",
+  "settings": [
+    {
+      "type": "text",
+      "id": "message",
+      "label": "Announcement text",
+      "default": "Score Big! It's Time to Shop 'til You Drop!"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#DB763F"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#ffffff"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Top Announcement Bar "
+    }
+  ]
+}
+{% endschema %}
+
+
+
+

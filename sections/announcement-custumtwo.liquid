@@ -1,0 +1,65 @@
+<div class="use-code-bar">
+  <span>{{ section.settings.prefix_text }}</span>
+  <strong>{{ section.settings.coupon_code }}</strong>
+  <span>{{ section.settings.suffix_text }}</span>
+</div>
+
+<style>
+.use-code-bar {
+  background-color: {{ section.settings.bg_color }};
+  height: {{ section.settings.height }}px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  color: #ffffff;
+}
+
+.use-code-bar strong {
+  font-weight: 700;
+  margin: 0 4px;
+}
+</style>
+
+{% schema %}
+{
+  "name": "Use Code Bar",
+  "settings": [
+    {
+      "type": "text",
+      "id": "prefix_text",
+      "label": "Prefix text",
+      "default": "Use Code:"
+    },
+    {
+      "type": "text",
+      "id": "coupon_code",
+      "label": "Coupon code",
+      "default": "CENTELLA10"
+    },
+    {
+      "type": "text",
+      "id": "suffix_text",
+      "label": "Suffix text",
+      "default": "for free delivery"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#000000"
+    },
+    {
+      "type": "text",
+      "id": "height",
+      "label": "Bar height (px)",
+      "default": "46"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Use Code Bar"
+    }
+  ]
+}
+{% endschema %}

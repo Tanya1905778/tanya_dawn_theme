@@ -1,75 +1,69 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
-    "image_banner": {
-      "type": "image-banner",
+    "section_four_iJ6pPd": {
+      "type": "section-four",
+      "name": "Hero with Default Image",
+      "settings": {
+        "heading": "Welcome to our store",
+        "button_label": "Shop Now",
+        "button_link": ""
+      }
+    },
+    "block_image_aj8QN6": {
+      "type": "block-image",
       "blocks": {
-        "heading": {
-          "type": "heading",
+        "icon_block_PpfXf8": {
+          "type": "icon_block",
           "settings": {
-            "heading": "Browse our latest products",
-            "heading_size": "h0"
+            "icon_image": "shopify://shop_images/Group_14071.png",
+            "text": "Vegan"
           }
         },
-        "button": {
-          "type": "buttons",
+        "icon_block_rLp99g": {
+          "type": "icon_block",
           "settings": {
-            "button_label_1": "Shop all",
-            "button_link_1": "shopify://collections/all",
-            "button_style_secondary_1": true,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
+            "icon_image": "shopify://shop_images/Group_14070.png",
+            "text": "Clean Beauty"
+          }
+        },
+        "icon_block_NxCRmG": {
+          "type": "icon_block",
+          "settings": {
+            "icon_image": "shopify://shop_images/Frame_240923.jpg",
+            "text": "Cruelty Free"
+          }
+        },
+        "icon_block_9RLxeL": {
+          "type": "icon_block",
+          "settings": {
+            "icon_image": "shopify://shop_images/Group_14075.png",
+            "text": "Recyclable Packaging"
           }
         }
       },
       "block_order": [
-        "heading",
-        "button"
+        "icon_block_PpfXf8",
+        "icon_block_rLp99g",
+        "icon_block_NxCRmG",
+        "icon_block_9RLxeL"
       ],
+      "name": "Trust Icons Section",
       "settings": {
-        "image_overlay_opacity": 40,
-        "image_height": "large",
-        "desktop_content_position": "bottom-center",
-        "show_text_box": false,
-        "image_behavior": "none",
-        "desktop_content_alignment": "center",
-        "color_scheme": "scheme-3",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": false,
-        "show_text_below": false
-      }
-    },
-    "featured_collection": {
-      "type": "featured-collection",
-      "settings": {
-        "title": "Featured products",
-        "heading_size": "h2",
-        "description": "",
-        "show_description": false,
-        "description_style": "body",
-        "collection": "all",
-        "products_to_show": 8,
-        "columns_desktop": 4,
-        "color_scheme": "scheme-1",
-        "full_width": false,
-        "show_view_all": true,
-        "view_all_style": "solid",
-        "enable_desktop_slider": false,
-        "swipe_on_mobile": false,
-        "image_ratio": "adapt",
-        "image_shape": "default",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": false,
-        "quick_add": "none",
-        "columns_mobile": "2",
-        "padding_top": 44,
-        "padding_bottom": 36
+        "title": "Make a good choice."
       }
     }
   },
   "order": [
-    "image_banner",
-    "featured_collection"
+    "section_four_iJ6pPd",
+    "block_image_aj8QN6"
   ]
 }

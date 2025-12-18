@@ -1,0 +1,154 @@
+
+<section class="custom-hero">
+  <div class="hero-bg">
+    {% if section.settings.image != blank %}
+      <img 
+        src="{{ section.settings.image | image_url: width: 2000 }}" 
+        alt="{{ section.settings.image.alt | escape }}"
+        width="{{ section.settings.image.width }}"
+        height="{{ section.settings.image.height }}"
+        loading="lazy">
+    {% else %}
+      <img 
+        src="{{ 'mask-group.svg' | asset_url }}" 
+        alt="Default Banner"
+        width="2000"
+        height="1000" 
+        loading="lazy">
+    {% endif %}
+    <div class="hero-overlay"></div>
+  </div>
+
+  <div class="hero-content">
+    <h1 class="hero-heading">{{ section.settings.heading }}</h1>
+    {% if section.settings.button_label != blank %}
+      <a href="{{ section.settings.button_link }}" class="hero-btn">
+        {{ section.settings.button_label }}
+      </a>
+    {% endif %}
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Hero with Default Image",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Welcome to our store"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Hero Image",
+      "info": "If left blank, the default asset image will be used."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "Shop Now"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero with Default Image"
+    }
+  ]
+}
+{% endschema %}
+<style>
+.custom-hero {
+  position: relative;
+  width: 100%;
+  height: 60vh; 
+  min-height: 450px;
+  overflow: hidden;
+  display: flex;
+  /* 'flex-start' moves content toward the top */
+  align-items: flex-start; 
+  justify-content: flex-start;
+}
+
+.hero-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-bg, .hero-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+/* Darkens the image so text stands out */
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.1); 
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: left;
+  color: #ffffff;
+  /* Adjust these two numbers to move the text exactly where you want it */
+  padding-top: 80px;  /* Moves text down from the very top */
+  padding-left: 60px; /* Moves text in from the left */
+  max-width: 600px;
+}
+
+.hero-heading {
+  font-size: 3.8rem;
+  margin-bottom: 20px;
+  font-weight: 700;
+  line-height: 1.1;
+  color: #ffffff;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2); /* Makes white text pop */
+}
+
+.hero-btn {
+  display: inline-block;
+  padding: 14px 40px;
+  background-color: #d27b49; /* The orange from your image */
+  color: #ffffff;           
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 12px;      /* Rounded corners */
+  transition: all 0.3s ease;
+}
+
+.hero-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* Responsive fix for mobile phones */
+@media screen and (max-width: 768px) {
+  .hero-content {
+    padding-top: 50px;
+    padding-left: 20px;
+  }
+  .hero-heading {
+    font-size: 2.2rem;
+  }
+}
+</style>

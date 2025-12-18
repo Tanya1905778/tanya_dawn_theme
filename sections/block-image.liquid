@@ -1,0 +1,143 @@
+<section class="trust-icons-section">
+  <div class="trust-container">
+    {% if section.settings.title != blank %}
+      <h2 class="trust-title">{{ section.settings.title }}</h2>
+    {% endif %}
+
+    <div class="trust-grid">
+      {% for block in section.blocks %}
+        <div class="trust-item" {{ block.shopify_attributes }}>
+          <div class="trust-icon">
+            {% if block.settings.icon_image != blank %}
+              <img 
+                src="{{ block.settings.icon_image | image_url: width: 100 }}" 
+                alt="{{ block.settings.text | escape }}"
+                width="60"
+                height="60"
+                loading="lazy">
+            {% else %}
+              {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+            {% endif %}
+          </div>
+          <p class="trust-text">{{ block.settings.text }}</p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Trust Icons Section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Main Heading",
+      "default": "Make a good choice."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "icon_block",
+      "name": "Icon & Text",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon_image",
+          "label": "Icon Image"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text Label",
+          "default": "Feature Name"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Trust Icons Section",
+      "blocks": [
+        { "type": "icon_block" },
+        { "type": "icon_block" },
+        { "type": "icon_block" },
+        { "type": "icon_block" },
+    
+      ]
+    }
+  ]
+}
+{% endschema %}
+<style>
+.trust-icons-section {
+  padding: 40px 5%;
+}
+
+.trust-container {
+  background-color: #fff9f6; /* Light cream background from your image */
+  border-radius: 40px;      /* Very rounded corners */
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.trust-title {
+  font-size: 24px;
+  margin-bottom: 40px;
+  font-weight: 500;
+  color: #000;
+}
+
+.trust-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.trust-item {
+  flex: 1;
+  min-width: 120px;
+  max-width: 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.trust-icon {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.trust-icon img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.trust-text {
+  font-size: 16px;
+  color: #333;
+  margin: 0;
+  line-height: 1.2;
+}
+
+/* Mobile: Stack them or show 2 per row */
+@media screen and (max-width: 768px) {
+  .trust-grid {
+    gap: 20px;
+  }
+  .trust-item {
+    flex: 0 0 40%;
+  }
+  .trust-container {
+    border-radius: 20px;
+    padding: 40px 10px;
+  }
+}
+</style>
