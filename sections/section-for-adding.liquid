@@ -1,0 +1,215 @@
+<section class="hero-banner">
+  <div class="hero-content">
+
+    <!-- PRODUCT CARD -->
+    <div class="hero-product-card">
+   
+      {{ section.settings.product.featured_image | image_url:width:120 | image_tag :alt: section.settings.product.title }}
+
+      <div class="hero-product-info">
+        <h4>{{ section.settings.product.title }}</h4>
+        <p>{{ section.settings.product.description | truncate: 60 }}</p>
+
+        <div class="hero-price">
+          {{ section.settings.product.price | money }}
+          <span class="discount">(60%)</span>
+        </div>
+
+        <div class="hero-actions">
+          {% comment %} <form method="post" action="/cart/add">
+            <input
+              type="hidden"
+              name="id"
+              value="{{ section.settings.product.selected_or_first_available_variant.id }}"
+            >
+            <button type="submit">ADD TO BAG</button>
+          </form> {% endcomment %}
+         <button
+  class="add-to-cart-button"
+  data-variant-id="{{ section.settings.product.selected_or_first_available_variant.id }}"
+>
+  Add to Bag
+</button>
+
+          <a href="{{ section.settings.product.url }}">View</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODEL IMAGE -->
+    {% comment %} <img
+      class="hero-model-image"
+      src="{{ section.settings.model_image | image_url: width: 800 }}"
+      alt="Model"
+    > {% endcomment %}
+    {% comment %} {{section.settings.model_image | image_url: width: 800 | image_tag :alt: 'Model' ,class: "hero-model-image"}} {% endcomment %}
+
+  </div>
+</section>
+<script>
+   document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.add-to-cart-button').forEach(button => {
+    button.addEventListener('click', async () => {
+      const variantId = button.dataset.variantId;
+      const originalText = button.textContent;
+
+      button.textContent = 'Adding...';
+      button.disabled = true;
+
+      // 1. Prepare data including the section we want to update
+      const sectionsToUpdate = ['cart-drawer', 'cart-icon-bubble'];
+      const formData = {
+        id: variantId,
+        quantity: 1,
+        sections: sectionsToUpdate 
+      };
+
+      try {
+        const response = await fetch('/cart/add.js', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(formData)
+        });
+
+        if (!response.ok) throw new Error('Add to cart failed');
+        const data = await response.json();
+
+        // 2. Access the Dawn Cart Drawer component
+        const cartDrawer = document.querySelector('cart-drawer');
+        
+        if (cartDrawer) {
+          // Update the drawer content with the new data
+          cartDrawer.renderContents(data);
+          // Remove 'is-empty' class in case it was empty before
+          cartDrawer.classList.remove('is-empty');
+          // Open the drawer
+          cartDrawer.open();
+        }
+
+        button.textContent = 'Added ✓';
+        setTimeout(() => {
+          button.textContent = originalText;
+          button.disabled = false;
+        }, 2000);
+
+      } catch (error) {
+        console.error(error);
+        alert('Error adding product');
+        button.disabled = false;
+        button.textContent = originalText;
+      }
+    });
+  });
+});
+</script>
+
+<style>
+.hero-banner {
+  position: relative;
+  width: 100%;
+  height: 450px;
+  background-image: url({{ section.settings.bg_image | image_url: width: 2000 }});
+  background-size: cover;
+  background-position: center;
+}
+
+.hero-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* MODEL IMAGE */
+.hero-model-image {
+  position: absolute;
+  right: 5%;
+  bottom: 0;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* PRODUCT CARD */
+.hero-product-card {
+  position: absolute;
+  left: 5%;
+  bottom: 20%;
+  /* background: white; */
+  border-radius: 12px;
+  padding: 16px;
+  width: 300px;
+  display: flex;
+  gap: 12px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+}
+
+.hero-product-card img {
+  width: 80px;
+  border-radius: 8px;
+}
+
+.hero-product-info h4 {
+  font-size: 14px;
+  margin: 0;
+}
+
+.hero-product-info p {
+  font-size: 12px;
+  margin: 4px 0;
+}
+
+.hero-price {
+  font-weight: bold;
+}
+
+.discount {
+  color: green;
+  margin-left: 6px;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.hero-actions button {
+  background: #f8c400;
+  border: none;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+.hero-actions a {
+  font-size: 12px;
+  text-decoration: underline;
+}
+</style>
+{% schema %}
+{
+  "name": "Hero with product card",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Background image"
+    },
+    // {
+    //   "type": "image_picker",
+    //   "id": "model_image",
+    //   "label": "Model image"
+    // },
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Select product"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero product banner"
+    }
+  ]
+}
+{% endschema %}
+
+
