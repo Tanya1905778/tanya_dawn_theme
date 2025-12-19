@@ -72,11 +72,22 @@
           "best-seller"
         ]
       }
+    },
+    "skincare_section_VHLqPY": {
+      "type": "skincare-section",
+      "name": "Conditional collections",
+      "settings": {
+        "toggle_collection_bg_img": "shopify://shop_images/girl-heading.png",
+        "toggle_collection_1": "shoes-copy",
+        "toggle_collection_2": "bike-rack",
+        "toggle_collection_color_scheme": ""
+      }
     }
   },
   "order": [
     "section_four_iJ6pPd",
     "block_image_aj8QN6",
-    "collection_list_grid_79HW8M"
+    "collection_list_grid_79HW8M",
+    "skincare_section_VHLqPY"
   ]
 }
