@@ -1,215 +1,457 @@
-<section class="hero-banner">
-  <div class="hero-content">
+<div class="hotspot-section__wrapper">
+  {% if section.settings.hotspot_section_image != blank %}
+    
+    <div class="hotspot-section__image-container">
 
-    <!-- PRODUCT CARD -->
-    <div class="hero-product-card">
-   
-      {{ section.settings.product.featured_image | image_url:width:120 | image_tag :alt: section.settings.product.title }}
+      {{ section.settings.hotspot_section_image | image_url: width: 2000 | image_tag }}
 
-      <div class="hero-product-info">
-        <h4>{{ section.settings.product.title }}</h4>
-        <p>{{ section.settings.product.description | truncate: 60 }}</p>
+      {% for block in section.blocks %}
+        {% if block.type == 'hotspot' and block.settings.hotspot_product != blank %}
+          <button
+            class="hotspot-btn"
+            style="
+              left: {{ block.settings.x_position }}%;
+              top: {{ block.settings.y_position }}%;
+            "
+            {{ block.shopify_attributes }}
+            data-product-id="{{ block.settings.hotspot_product.id }}"
+            data-product-title="{{ block.settings.hotspot_product.title }}"
+            data-product-price="{{ block.settings.hotspot_product.price }}"
+            data-product-image="{{ block.settings.hotspot_product.featured_image | image_url: width: 200 }}"
+            data-product-url="{{ block.settings.hotspot_product.url }}"
+            data-variant-id="{{ block.settings.hotspot_product.selected_or_first_available_variant.id }}"
+            data-x-axis="{{ block.settings.x_position }}"
+            data-y-axis="{{ block.settings.y_position }}"
+          >
+          +
+     
+          </button>
+        {% endif %}
+      {% endfor %}
 
-        <div class="hero-price">
-          {{ section.settings.product.price | money }}
-          <span class="discount">(60%)</span>
-        </div>
-
-        <div class="hero-actions">
-          {% comment %} <form method="post" action="/cart/add">
-            <input
-              type="hidden"
-              name="id"
-              value="{{ section.settings.product.selected_or_first_available_variant.id }}"
-            >
-            <button type="submit">ADD TO BAG</button>
-          </form> {% endcomment %}
-         <button
-  class="add-to-cart-button"
-  data-variant-id="{{ section.settings.product.selected_or_first_available_variant.id }}"
->
-  Add to Bag
-</button>
-
-          <a href="{{ section.settings.product.url }}">View</a>
+     
+      <div id="hotspot-modal" aria-hidden="true">
+        <div id="hotspot-modal__card" role="dialog" aria-modal="true">
+          <button id="hotspot-modal__close" type="button">×</button>
+          <div id="hotspot-modal__body"></div>
         </div>
       </div>
+
     </div>
 
-    <!-- MODEL IMAGE -->
-    {% comment %} <img
-      class="hero-model-image"
-      src="{{ section.settings.model_image | image_url: width: 800 }}"
-      alt="Model"
-    > {% endcomment %}
-    {% comment %} {{section.settings.model_image | image_url: width: 800 | image_tag :alt: 'Model' ,class: "hero-model-image"}} {% endcomment %}
+  {% endif %}
+</div>
 
-  </div>
-</section>
-<script>
-   document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('.add-to-cart-button').forEach(button => {
-    button.addEventListener('click', async () => {
-      const variantId = button.dataset.variantId;
-      const originalText = button.textContent;
+<style>
 
-      button.textContent = 'Adding...';
-      button.disabled = true;
+.hotspot-section {
+    box-sizing: border-box;
+  }
 
-      // 1. Prepare data including the section we want to update
-      const sectionsToUpdate = ['cart-drawer', 'cart-icon-bubble'];
-      const formData = {
-        id: variantId,
-        quantity: 1,
-        sections: sectionsToUpdate 
-      };
+  .hotspot-section__wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 0;
+    position: relative;
+  }
 
-      try {
-        const response = await fetch('/cart/add.js', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(formData)
-        });
 
-        if (!response.ok) throw new Error('Add to cart failed');
-        const data = await response.json();
+  .hotspot-section__image-container {
+    position: relative;
+    width: 100%;
+  }
 
-        // 2. Access the Dawn Cart Drawer component
-        const cartDrawer = document.querySelector('cart-drawer');
-        
-        if (cartDrawer) {
-          // Update the drawer content with the new data
-          cartDrawer.renderContents(data);
-          // Remove 'is-empty' class in case it was empty before
-          cartDrawer.classList.remove('is-empty');
-          // Open the drawer
-          cartDrawer.open();
-        }
+ 
+  .hotspot-section__image-container img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
 
-        button.textContent = 'Added ✓';
-        setTimeout(() => {
-          button.textContent = originalText;
-          button.disabled = false;
-        }, 2000);
+  .hotspot-btn {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: blue;
+    color: #fff;
+    border: none;
+    cursor: pointer;
 
-      } catch (error) {
-        console.error(error);
-        alert('Error adding product');
-        button.disabled = false;
-        button.textContent = originalText;
-      }
+   
+    transform: translate(-50%, -50%);
+  }
+
+  
+  #hotspot-modal {
+    position: absolute;
+    z-index: 100;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+
+  #hotspot-modal.is-open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+
+  #hotspot-modal__card {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    padding: 12px;
+    width: 300px;
+    height: 130px;
+    position: relative;
+    overflow: hidden;
+  }
+
+ 
+  #hotspot-modal__close {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    font-size: 18px;
+    line-height: 1;
+    cursor: pointer;
+    color: #666;
+    padding: 2px;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: color 0.2s ease, background 0.2s ease;
+    z-index: 10;
+  }
+
+  #hotspot-modal__close:hover {
+    color: #000;
+    background: #fff;
+  }
+
+  
+  #hotspot-modal__body {
+    display: flex;
+    gap: 12px;
+    height: 100%;
+  }
+
+  
+  #hotspot-modal__body img {
+    width: 106px;
+    height: 106px;
+    object-fit: cover;
+    border-radius: 4px;
+    flex-shrink: 0;
+  }
+
+
+  #hotspot-modal__body > div {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-width: 0;
+  }
+
+  #hotspot-modal__body h2 {
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0 0 4px 0;
+    line-height: 1.3;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    padding-right: 20px; 
+  }
+
+  #hotspot-modal__body .price {
+    font-size: 13px;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 8px;
+  }
+
+
+  #hotspot-modal__body .actions {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  #hotspot-modal__body .actions button[data-add-to-cart] {
+    width: 100%;
+    padding: 6px 12px;
+    background: #F7CA00;
+;
+    color: black;
+    border: none;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+
+  #hotspot-modal__body .actions button[data-add-to-cart]:hover {
+    background: #333;
+  }
+
+  #hotspot-modal__body .actions button[data-add-to-cart]:disabled {
+    background: #999;
+    cursor: not-allowed;
+  }
+
+  #hotspot-modal__body .actions a {
+    display: block;
+    text-align: center;
+    padding: 5px 12px;
+    color: #000;
+    text-decoration: none;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 11px;
+    transition: border-color 0.2s ease, background 0.2s ease;
+  }
+
+  #hotspot-modal__body .actions a:hover {
+    border-color: #000;
+    background: #f9f9f9;
+  }
+
+  
+  @media (max-width: 768px) {
+    #hotspot-modal__card {
+      width: 280px;
+    }
+  }
+</style>
+
+
+
+ <script>
+      document.addEventListener('DOMContentLoaded', () => {
+  console.log("HOTSPOT TEST SECTION .........");
+
+  const hotspotButtons = document.querySelectorAll('.hotspot-btn');
+  const modal = document.querySelector('#hotspot-modal');
+  const modalBody = document.querySelector('#hotspot-modal__body');
+  const modalCloseBtn = document.querySelector('#hotspot-modal__close');
+
+  hotspotButtons.forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+
+     const { productTitle, productPrice, productImage, productUrl, variantId } = btn.dataset;
+
+      modalBody.innerHTML = `
+        <img src="${productImage}" alt="${productTitle}">
+        <div>
+          <div>
+            <h2>${productTitle}</h2>
+            <div class="price">${formatMoney(productPrice)}</div>
+          </div>
+          <div class="actions">
+            <button type="button" data-add-to-cart data-variant-id="${variantId}">Add to cart</button>
+            <a href="${productUrl}">View product</a>
+          </div>
+        </div>
+      `;
+
+      const addToCartBtn = modalBody.querySelector('button[data-add-to-cart]');
+       addToCartBtn.addEventListener('click', () => handleAddToCart(variantId, addToCartBtn));
+
+      modal.classList.add('is-open');
+      modal.setAttribute('aria-hidden', 'false');
+
+      positionModal(btn);
+ 
     });
   });
+   const handleAddToCart = async (variantId, button) => {
+    if (!variantId) return;
+
+    button.disabled = true;
+    const originalText = button.textContent;
+    button.textContent = 'Adding...';
+
+    try {
+      const response = await fetch('/cart/add.js', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id: variantId, quantity: 1 }),
+      });
+
+      if (!response.ok) throw new Error('Cart addition failed');
+
+      const data = await response.json();
+
+
+
+
+      button.textContent = 'Added!';
+
+
+
+      
+     
+      modal.classList.remove('is-open');
+
+     
+    
+
+      setTimeout(() => {
+        button.textContent = originalText;
+        button.disabled = false;
+      }, 2000);
+      const cartResponse = await fetch('/cart?section_id=cart-drawer');
+      const cartText = await cartResponse.text();
+
+      const dom = new DOMParser();
+      const content = dom.parseFromString(cartText, 'text/html');
+
+   
+      const requiredHTML = content.querySelector('#CartDrawer');
+      if (!requiredHTML) return;
+
+     
+      
+      if(document.querySelector(".is-empty")){
+        document.querySelector(".drawer__inner-empty").remove()
+        document.querySelector(".is-empty").classList.remove("is-empty")
+      }
+
+    
+      document.querySelector('#CartDrawer').innerHTML = requiredHTML.innerHTML;
+
+   
+      document.querySelector('cart-drawer').classList.add('active');
+
+    
+      document.querySelector("#CartDrawer-Overlay").addEventListener("click", (e)=>{
+        document.querySelector('cart-drawer').classList.remove('active')
+      })
+
+      
+
+      const cartRes = await fetch('/cart.js');
+      const cart = await cartRes.json();
+      const updatedCartCount = cart?.item_count || 1;
+      
+      let bubble = document.querySelector(".cart-count-bubble");
+      if(bubble) {
+        document.querySelector(".cart-count-bubble").querySelector("span").innerText = updatedCartCount
+      } else {
+        let myBuble = document.createElement("div")
+        myBuble.classList.add("cart-count-bubble")
+        myBuble.innerHTML = `
+          <span aria-hidden="true">1</span><span class="visually-hidden">1 item</span>
+        `
+        document.querySelector("#cart-icon-bubble").appendChild(myBuble)
+      }
+
+
+    } catch (error) {
+      console.error('Error:', error);
+      button.textContent = 'Error';
+      setTimeout(() => {
+        button.textContent = originalText;
+        button.disabled = false;
+      }, 2000);
+    }
+  };
+  modalCloseBtn.addEventListener('click', () => {
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden', 'true');
+ 
+  });
+  document.addEventListener('click', (e) => {
+    if (!modal.contains(e.target) && !e.target.classList.contains('hotspot-btn')) {
+      modal.classList.remove('is-open');
+    }
+  });
+
+ function positionModal(button) {
+    const rect = button.getBoundingClientRect();
+    const containerRect = button.closest('.hotspot-section__image-container').getBoundingClientRect();
+
+    let leftPos = rect.left - containerRect.left + 30;
+    let topPos = rect.top - containerRect.top;
+
+  
+    if (leftPos + 300 > containerRect.width) {
+      leftPos = rect.left - containerRect.left - 310;
+    }
+
+    modal.style.left = `${leftPos}px`;
+    modal.style.top = `${topPos}px`;
+  }
+
+
+  function formatMoney(cents) {
+    return `₹${(cents / 100).toFixed(2)}`;
+  }
 });
 </script>
 
-<style>
-.hero-banner {
-  position: relative;
-  width: 100%;
-  height: 450px;
-  background-image: url({{ section.settings.bg_image | image_url: width: 2000 }});
-  background-size: cover;
-  background-position: center;
-}
 
-.hero-content {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
-/* MODEL IMAGE */
-.hero-model-image {
-  position: absolute;
-  right: 5%;
-  bottom: 0;
-  height: 100%;
-  object-fit: contain;
-}
-
-/* PRODUCT CARD */
-.hero-product-card {
-  position: absolute;
-  left: 5%;
-  bottom: 20%;
-  /* background: white; */
-  border-radius: 12px;
-  padding: 16px;
-  width: 300px;
-  display: flex;
-  gap: 12px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
-}
-
-.hero-product-card img {
-  width: 80px;
-  border-radius: 8px;
-}
-
-.hero-product-info h4 {
-  font-size: 14px;
-  margin: 0;
-}
-
-.hero-product-info p {
-  font-size: 12px;
-  margin: 4px 0;
-}
-
-.hero-price {
-  font-weight: bold;
-}
-
-.discount {
-  color: green;
-  margin-left: 6px;
-}
-
-.hero-actions {
-  display: flex;
-  gap: 10px;
-  margin-top: 8px;
-}
-
-.hero-actions button {
-  background: #f8c400;
-  border: none;
-  padding: 6px 10px;
-  cursor: pointer;
-}
-
-.hero-actions a {
-  font-size: 12px;
-  text-decoration: underline;
-}
-</style>
 {% schema %}
 {
-  "name": "Hero with product card",
+  "name": "Hotspot section",
+  "tag": "section",
+  "class": "hotspot-section",
   "settings": [
     {
       "type": "image_picker",
-      "id": "bg_image",
-      "label": "Background image"
-    },
-    // {
-    //   "type": "image_picker",
-    //   "id": "model_image",
-    //   "label": "Model image"
-    // },
+      "id": "hotspot_section_image",
+      "label": "Add image"
+    }
+  ],
+  "blocks": [
     {
-      "type": "product",
-      "id": "product",
-      "label": "Select product"
+      "type": "hotspot",
+      "name": "Hotspot",
+      "settings": [
+        {
+          "type": "range",
+          "id": "x_position",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "default": 10,
+          "label": "X-axis position"
+        },
+        {
+          "type": "range",
+          "id": "y_position",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "default": 10,
+          "label": "Y-axis position"
+        },
+        {
+          "type": "product",
+          "id": "hotspot_product",
+          "label": "Link Product"
+        }
+      ]
     }
   ],
   "presets": [
     {
-      "name": "Hero product banner"
+      "name": "Hotspot Section TEST"
     }
   ]
 }
 {% endschema %}
-
-

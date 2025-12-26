@@ -18,6 +18,19 @@
         "button_link": ""
       }
     },
+    "collection_list_grid_79HW8M": {
+      "type": "collection-list-grid",
+      "name": "Collection List Grid",
+      "settings": {
+        "title": "GET STARTED",
+        "collection_list": [
+          "trousers-pants-copy",
+          "backpacks",
+          "best-seller",
+          "bike-rack"
+        ]
+      }
+    },
     "block_image_aj8QN6": {
       "type": "block-image",
       "blocks": {
@@ -61,19 +74,7 @@
         "title": "Make a good choice."
       }
     },
-    "collection_list_grid_79HW8M": {
-      "type": "collection-list-grid",
-      "name": "Collection List Grid",
-      "settings": {
-        "title": "GET STARTED",
-        "collection_list": [
-          "trousers-pants-copy",
-          "backpacks",
-          "best-seller"
-        ]
-      }
-    },
-    "skincare_section_VHLqPY": {
+    "skincare_section_Gq9AwX": {
       "type": "skincare-section",
       "name": "Conditional collections",
       "settings": {
@@ -82,12 +83,85 @@
         "toggle_collection_2": "bike-rack",
         "toggle_collection_color_scheme": ""
       }
+    },
+    "section_for_adding_j3im6B": {
+      "type": "section-for-adding",
+      "blocks": {
+        "hotspot_wr6VyJ": {
+          "type": "hotspot",
+          "settings": {
+            "x_position": 10,
+            "y_position": 10,
+            "hotspot_product": "rossignol-pursuit-12-ti-xelium-mens-skis-xel-110-b73-bindings-2015"
+          }
+        }
+      },
+      "block_order": [
+        "hotspot_wr6VyJ"
+      ],
+      "name": "Hotspot Section TEST",
+      "settings": {
+        "hotspot_section_image": "shopify://shop_images/bestsellers_1_550d10c3-5b91-44df-a4bd-86ec70e6bb8a.png"
+      }
+    },
+    "know_your_story_heKJML": {
+      "type": "know-your-story",
+      "blocks": {
+        "quality_card_Y3E73N": {
+          "type": "quality_card",
+          "settings": {
+            "quality_card_image": "shopify://shop_images/data-quality_1.png",
+            "quality_card_heading": "Quality",
+            "quality_card_text_content": "Amanté products are made of premium fabrics that undergo rigorous durability testing. Ensuring every piece of lingerie is crafted carefully offering best of comfort and quality"
+          }
+        },
+        "quality_card_HeDaRn": {
+          "type": "quality_card",
+          "settings": {
+            "quality_card_image": "shopify://shop_images/data-quality_1.png",
+            "quality_card_heading": "Quality",
+            "quality_card_text_content": "Amanté products are made of premium fabrics that undergo rigorous durability testing. Ensuring every piece of lingerie is crafted carefully offering best of comfort and quality"
+          }
+        },
+        "quality_card_BG9f4y": {
+          "type": "quality_card",
+          "settings": {
+            "quality_card_image": "shopify://shop_images/data-quality_1.png",
+            "quality_card_heading": "Quality",
+            "quality_card_text_content": "Amanté products are made of premium fabrics that undergo rigorous durability testing. Ensuring every piece of lingerie is crafted carefully offering best of comfort and quality"
+          }
+        },
+        "quality_card_wDUXqT": {
+          "type": "quality_card",
+          "settings": {
+            "quality_card_image": "shopify://shop_images/data-quality_1.png",
+            "quality_card_heading": "Quality",
+            "quality_card_text_content": "Amanté products are made of premium fabrics that undergo rigorous durability testing. Ensuring every piece of lingerie is crafted carefully offering best of comfort and quality"
+          }
+        }
+      },
+      "block_order": [
+        "quality_card_Y3E73N",
+        "quality_card_HeDaRn",
+        "quality_card_BG9f4y",
+        "quality_card_wDUXqT"
+      ],
+      "name": "Know Our Story",
+      "settings": {
+        "video": "shopify://files/videos/0_Christmas_Fireplace_3840x2160.mp4",
+        "heading": "Know Our Story",
+        "description": "<p>Amanté is an international intimate wear brand, offering comfort, fashion, and sensuality to the modern South Asian woman. 5 words which describe the amanté woman, and the philosophies embedded in each of our designs are: Spirited. Sensual. Sophisticated. Stylish. Self-assured.<br/><br/>Our products are made for the ever evolving modern woman of today who just like fashion, is an ever-evolving canvas. Her tastes, roles, goals, ambitions and even her body are in a constant state of evolution. We at amanté, understand and embrace these changes. </p>",
+        "button_text": "READ MORE",
+        "button_link": ""
+      }
     }
   },
   "order": [
     "section_four_iJ6pPd",
-    "block_image_aj8QN6",
     "collection_list_grid_79HW8M",
-    "skincare_section_VHLqPY"
+    "block_image_aj8QN6",
+    "skincare_section_Gq9AwX",
+    "section_for_adding_j3im6B",
+    "know_your_story_heKJML"
   ]
 }
