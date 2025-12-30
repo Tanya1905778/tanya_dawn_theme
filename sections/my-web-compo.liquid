@@ -1,0 +1,32 @@
+<my-web-component> </my-web-component>
+
+<style></style>
+
+<script>
+  class MyWebComponent extends HTMLElement {
+    constructor() {
+      super();
+    //   this.attachShadow({mode:""})
+    //   this.shadowRoot.innerHTML = `
+    //   <h1> I am web compoent</h1>`
+    }
+    connectedCallback(){
+        this.attachShadow({mode:"open"});
+        this.shadowRoot.innerHTML =`
+        <h1> I am a Web Component</h1>`
+    }
+  }
+  customElements.define('my-web-component', MyWebComponent);
+</script>
+
+{% schema %}
+{
+  "name": "test web component",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Test web component"
+    }
+  ]
+}
+{% endschema %}

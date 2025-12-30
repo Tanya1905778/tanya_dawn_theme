@@ -1,0 +1,33 @@
+<div class="container">
+  {{ section.settings.image_with_text_image | image_url: width: 1200 | image_tag }}
+</div>
+{% comment %} <style>
+    .container{
+    border: 2px solid red;
+      margin: 0 auto;
+  padding: 40px 16px;
+    
+    }
+    .container img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+</style> {% endcomment %}
+{% schema %}
+{
+  "name": "Position liquid",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image_with_text_image",
+      "label": "Image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Position liquid"
+    }
+  ]
+}
+{% endschema %}
