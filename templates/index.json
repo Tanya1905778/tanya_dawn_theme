@@ -13,7 +13,7 @@
       "type": "section-four",
       "name": "Hero with Default Image",
       "settings": {
-        "heading": "Welcome to our store",
+        "heading": "Introducing Premium Beauty",
         "button_label": "Shop Now",
         "button_link": ""
       }
@@ -34,6 +34,20 @@
     "block_image_aj8QN6": {
       "type": "block-image",
       "blocks": {
+        "icon_block_FmAwR9": {
+          "type": "icon_block",
+          "settings": {
+            "icon_image": "shopify://shop_images/Group_14073_75efd088-3a9a-43e0-881f-df5e35ee75af.png",
+            "text": "Non-toxic"
+          }
+        },
+        "icon_block_xwBiDb": {
+          "type": "icon_block",
+          "settings": {
+            "icon_image": "shopify://shop_images/Group_14072_d40c44ee-46bd-42aa-b54a-35c60b1b7e09.png",
+            "text": "Sulphate Free"
+          }
+        },
         "icon_block_PpfXf8": {
           "type": "icon_block",
           "settings": {
@@ -64,6 +78,8 @@
         }
       },
       "block_order": [
+        "icon_block_FmAwR9",
+        "icon_block_xwBiDb",
         "icon_block_PpfXf8",
         "icon_block_rLp99g",
         "icon_block_NxCRmG",
@@ -87,16 +103,25 @@
     "section_for_adding_j3im6B": {
       "type": "section-for-adding",
       "blocks": {
+        "hotspot_8JtTJT": {
+          "type": "hotspot",
+          "settings": {
+            "x_position": 34,
+            "y_position": 50,
+            "hotspot_product": "rossignol-pursuit-16-ti-mens-skis-axl-3-120-tpx-bindings-2015"
+          }
+        },
         "hotspot_wr6VyJ": {
           "type": "hotspot",
           "settings": {
-            "x_position": 10,
-            "y_position": 10,
+            "x_position": 45,
+            "y_position": 38,
             "hotspot_product": "rossignol-pursuit-12-ti-xelium-mens-skis-xel-110-b73-bindings-2015"
           }
         }
       },
       "block_order": [
+        "hotspot_8JtTJT",
         "hotspot_wr6VyJ"
       ],
       "name": "Hotspot Section TEST",
@@ -107,6 +132,30 @@
     "know_your_story_heKJML": {
       "type": "know-your-story",
       "blocks": {
+        "policy_item_Rbyipc": {
+          "type": "policy_item",
+          "settings": {
+            "icon": "shopify://shop_images/Vector_863e45b9-caab-48bd-82e1-1e31d9f3bd0e.png",
+            "text": "Discreet Packaging",
+            "url": ""
+          }
+        },
+        "policy_item_FnpzpN": {
+          "type": "policy_item",
+          "settings": {
+            "icon": "shopify://shop_images/arrow_back_left_icon_123728_1_39558a8d-eeb2-40e2-aac4-65c66f30871e.png",
+            "text": "15 Day return",
+            "url": ""
+          }
+        },
+        "policy_item_p7mFDF": {
+          "type": "policy_item",
+          "settings": {
+            "icon": "shopify://shop_images/Group_236_d550026e-7534-48e0-bb6a-b547c76b1461.png",
+            "text": "100% Secure Payment",
+            "url": ""
+          }
+        },
         "quality_card_Y3E73N": {
           "type": "quality_card",
           "settings": {
@@ -141,6 +190,9 @@
         }
       },
       "block_order": [
+        "policy_item_Rbyipc",
+        "policy_item_FnpzpN",
+        "policy_item_p7mFDF",
         "quality_card_Y3E73N",
         "quality_card_HeDaRn",
         "quality_card_BG9f4y",
@@ -148,11 +200,100 @@
       ],
       "name": "Know Our Story",
       "settings": {
-        "video": "shopify://files/videos/0_Christmas_Fireplace_3840x2160.mp4",
-        "heading": "Know Our Story",
-        "description": "<p>Amanté is an international intimate wear brand, offering comfort, fashion, and sensuality to the modern South Asian woman. 5 words which describe the amanté woman, and the philosophies embedded in each of our designs are: Spirited. Sensual. Sophisticated. Stylish. Self-assured.<br/><br/>Our products are made for the ever evolving modern woman of today who just like fashion, is an ever-evolving canvas. Her tastes, roles, goals, ambitions and even her body are in a constant state of evolution. We at amanté, understand and embrace these changes. </p>",
-        "button_text": "READ MORE",
-        "button_link": ""
+        "know_our_story_color_scheme": "",
+        "know_our_story_video": "shopify://files/videos/0_Christmas_Fireplace_3840x2160.mp4",
+        "know_our_story_heading": "Know our story",
+        "know_our_story_text_1": "Amanté is an international intimate wear brand, offering comfort, fashion, and sensuality to the modern South Asian woman. 5 words which describe the amanté woman, and the philosophies embedded in each of our designs are: Spirited. Sensual. Sophisticated. Stylish. Self-assured.",
+        "know_our_story_text_2": "Our products are made for the ever evolving modern woman of today who just like fashion, is an ever-evolving canvas. Her tastes, roles, goals, ambitions and even her body are in a constant state of evolution. We at amanté, understand and embrace these changes.",
+        "story_read_more_button_label": "Read more",
+        "story_read_more_button_url": ""
+      }
+    },
+    "know_your_story_fWJQxy": {
+      "type": "know-your-story",
+      "blocks": {
+        "policy_item_gyQfNe": {
+          "type": "policy_item",
+          "settings": {
+            "icon": "shopify://shop_images/Vector_863e45b9-caab-48bd-82e1-1e31d9f3bd0e.png",
+            "text": "Discrete Packaging",
+            "url": ""
+          }
+        },
+        "policy_item_dNp368": {
+          "type": "policy_item",
+          "settings": {
+            "icon": "shopify://shop_images/arrow_back_left_icon_123728_1_39558a8d-eeb2-40e2-aac4-65c66f30871e.png",
+            "text": "!5 Day return",
+            "url": ""
+          }
+        },
+        "policy_item_kxxxaq": {
+          "type": "policy_item",
+          "settings": {
+            "icon": "shopify://shop_images/Group_236_d550026e-7534-48e0-bb6a-b547c76b1461.png",
+            "text": "100% Secure Payment",
+            "url": ""
+          }
+        },
+        "quality_card_FLTnXV": {
+          "type": "quality_card",
+          "settings": {
+            "quality_card_image": "shopify://shop_images/data-quality_1.png",
+            "quality_card_heading": "Quality",
+            "quality_card_text_content": "Amanté products are made of premium fabrics that undergo rigorous durability testing. Ensuring every piece of lingerie is crafted carefully offering best of comfort and quality"
+          }
+        },
+        "quality_card_ELDpjM": {
+          "type": "quality_card",
+          "settings": {
+            "quality_card_image": "shopify://shop_images/data-quality_1.png",
+            "quality_card_heading": "Quality",
+            "quality_card_text_content": "Amanté products are made of premium fabrics that undergo rigorous durability testing. Ensuring every piece of lingerie is crafted carefully offering best of comfort and quality"
+          }
+        },
+        "quality_card_wrAq9g": {
+          "type": "quality_card",
+          "settings": {
+            "quality_card_image": "shopify://shop_images/data-quality_1.png",
+            "quality_card_heading": "Quality",
+            "quality_card_text_content": "Amanté products are made of premium fabrics that undergo rigorous durability testing. Ensuring every piece of lingerie is crafted carefully offering best of comfort and quality"
+          }
+        },
+        "quality_card_WKNdyN": {
+          "type": "quality_card",
+          "settings": {
+            "quality_card_image": "shopify://shop_images/data-quality_1.png",
+            "quality_card_heading": "Quality",
+            "quality_card_text_content": "Amanté products are made of premium fabrics that undergo rigorous durability testing. Ensuring every piece of lingerie is crafted carefully offering best of comfort and quality"
+          }
+        }
+      },
+      "block_order": [
+        "policy_item_gyQfNe",
+        "policy_item_dNp368",
+        "policy_item_kxxxaq",
+        "quality_card_FLTnXV",
+        "quality_card_ELDpjM",
+        "quality_card_wrAq9g",
+        "quality_card_WKNdyN"
+      ],
+      "name": "Know Our Story",
+      "settings": {
+        "know_our_story_color_scheme": "",
+        "know_our_story_video": "shopify://files/videos/0_Christmas_Fireplace_3840x2160.mp4",
+        "know_our_story_heading": "Know our story",
+        "know_our_story_text_1": "Amanté is an international intimate wear brand, offering comfort, fashion, and sensuality to the modern South Asian woman. 5 words which describe the amanté woman, and the philosophies embedded in each of our designs are: Spirited. Sensual. Sophisticated. Stylish. Self-assured.",
+        "know_our_story_text_2": "Our products are made for the ever evolving modern woman of today who just like fashion, is an ever-evolving canvas. Her tastes, roles, goals, ambitions and even her body are in a constant state of evolution. We at amanté, understand and embrace these changes.",
+        "story_read_more_button_label": "Read more",
+        "story_read_more_button_url": ""
+      }
+    },
+    "recently_viewed_j3naeg": {
+      "type": "recently-viewed",
+      "name": "Recently Viewed Products",
+      "settings": {
+        "heading": "Recently viewed"
       }
     }
   },
@@ -162,6 +303,8 @@
     "block_image_aj8QN6",
     "skincare_section_Gq9AwX",
     "section_for_adding_j3im6B",
-    "know_your_story_heKJML"
+    "know_your_story_heKJML",
+    "know_your_story_fWJQxy",
+    "recently_viewed_j3naeg"
   ]
 }

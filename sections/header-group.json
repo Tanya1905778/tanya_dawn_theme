@@ -16,7 +16,7 @@
       "name": "Top Announcement Bar ",
       "settings": {
         "message": "Score Big! It's Time to Shop 'til You Drop!",
-        "bg_color": "#DB763F",
+        "bg_color": "#db763f",
         "text_color": "#ffffff"
       }
     },
@@ -52,7 +52,7 @@
         "menu_type_desktop": "dropdown",
         "sticky_header_type": "on-scroll-up",
         "show_line_separator": true,
-        "color_scheme": "scheme-dbd751fc-ebf2-4276-b039-631dbddacff1",
+        "color_scheme": "scheme-04bf6d83-5235-4ebc-9ccf-376b62deb3ad",
         "menu_color_scheme": "scheme-1",
         "enable_country_selector": false,
         "enable_language_selector": true,
