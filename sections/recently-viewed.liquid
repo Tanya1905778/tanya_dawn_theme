@@ -1,0 +1,62 @@
+<section class="recently-viewed page-width">
+  <h2>{{ section.settings.heading }}</h2>
+
+  <div class="recently-viewed-grid" id="recentlyViewedGrid"></div>
+</section>
+
+{% schema %}
+{
+  "name": "Recently Viewed Products",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Recently viewed"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Recently Viewed Products"
+    }
+  ]
+}
+{% endschema %}
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const container = document.getElementById('recentlyViewedGrid');
+    if (!container) return;
+
+    const items = JSON.parse(localStorage.getItem('recently_viewed_products')) || [];
+
+    if (!items.length) {
+      container.innerHTML = '<p>No recently viewed products.</p>';
+      return;
+    }
+
+    container.innerHTML = items.map(item => `
+      <a href="/products/${item.handle}" class="recent-product-card">
+        <img src="${item.image}" alt="${item.title}">
+        <h3>${item.title}</h3>
+        <p>${item.price}</p>
+      </a>
+    `).join('');
+  });
+</script>
+<style>
+.recently-viewed-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 20px;
+}
+
+.recent-product-card {
+  text-decoration: none;
+  color: inherit;
+}
+
+.recent-product-card img {
+  width: 100%;
+  border-radius: 8px;
+}
+</style>

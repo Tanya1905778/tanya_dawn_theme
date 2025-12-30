@@ -723,6 +723,32 @@
       </script>
       <script src="{{ 'product-model.js' | asset_url }}" defer></script>
     {%- endif -%}
+    <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const productData = {
+      id: {{ product.id }},
+      handle: "{{ product.handle }}",
+      title: "{{ product.title | escape }}",
+      image: "{{ product.featured_image | image_url: width: 400 }}",
+      price: "{{ product.price | money }}"
+    };
+
+    const key = 'recently_viewed_products';
+    let items = JSON.parse(localStorage.getItem(key)) || [];
+
+    // Remove duplicates
+    items = items.filter(item => item.id !== productData.id);
+
+    // Add to start
+    items.unshift(productData);
+
+    // Limit to 8 products
+    items = items.slice(0, 8);
+
+    localStorage.setItem(key, JSON.stringify(items));
+  });
+</script>
+
 
     {%- liquid
       if product.selected_or_first_available_variant.featured_media
