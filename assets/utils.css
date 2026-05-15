@@ -1,0 +1,157 @@
+/* Poppins – font-display: swap (Google Fonts, woff2) */
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/poppins/v24/pxiEyp8kv8JHgFVrJJnecmNE.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/poppins/v24/pxiEyp8kv8JHgFVrJJfecg.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/poppins/v24/pxiByp8kv8JHgFVrLGT9Z1JlFc-K.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/poppins/v24/pxiByp8kv8JHgFVrLGT9Z1xlFQ.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/poppins/v24/pxiByp8kv8JHgFVrLCz7Z1JlFc-K.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/poppins/v24/pxiByp8kv8JHgFVrLCz7Z1xlFQ.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* Typography – font size (px) */
+.util-fs-12 { font-size: 12px; }
+.util-fs-14 { font-size: 14px; }
+.util-fs-16 { font-size: 16px; }
+.util-fs-18 { font-size: 18px; }
+.util-fs-20 { font-size: 20px; }
+.util-fs-24 { font-size: 24px; }
+.util-fs-28 { font-size: 28px; }
+.util-fs-32 { font-size: 32px; }
+.util-fs-40 { font-size: 40px; }
+.util-fs-48 { font-size: 48px; }
+.util-fs-56 { font-size: 56px; }
+
+/* Line height */
+.util-lh-1 { line-height: 1; }
+.util-lh-tight { line-height: 1.2; }
+.util-lh-snug { line-height: 1.35; }
+.util-lh-normal { line-height: 1.5; }
+.util-lh-relaxed { line-height: 1.65; }
+.util-lh-loose { line-height: 1.8; }
+.util-lh-2 { line-height: 2; }
+
+/* Letter spacing */
+.util-ls-tighter { letter-spacing: -0.05em; }
+.util-ls-tight { letter-spacing: -0.025em; }
+.util-ls-normal { letter-spacing: 0; }
+.util-ls-wide { letter-spacing: 0.025em; }
+.util-ls-wider { letter-spacing: 0.05em; }
+.util-ls-widest { letter-spacing: 0.1em; }
+.util-ls-body { letter-spacing: 0.06rem; }
+
+/* Font family – theme */
+.util-font-body {
+  font-family: var(--font-body-family);
+  font-style: var(--font-body-style);
+  font-weight: var(--font-body-weight);
+}
+
+.util-font-heading {
+  font-family: var(--font-heading-family);
+  font-style: var(--font-heading-style);
+  font-weight: var(--font-heading-weight);
+}
+
+/* Font family – Poppins (Google Fonts) */
+.util-font-poppins-regular {
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.util-font-poppins-medium {
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+}
+
+.util-font-poppins-darker {
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+}
+
+/* Display */
+.util-d-flex { display: flex; }
+.util-d-inline-flex { display: inline-flex; }
+.util-d-block { display: block; }
+.util-d-inline-block { display: inline-block; }
+.util-d-none { display: none; }
+
+/* Flex direction */
+.util-flex-row { flex-direction: row; }
+.util-flex-col { flex-direction: column; }
+.util-flex-wrap { flex-wrap: wrap; }
+.util-flex-nowrap { flex-wrap: nowrap; }
+
+/* Align items */
+.util-items-start { align-items: flex-start; }
+.util-items-center { align-items: center; }
+.util-items-end { align-items: flex-end; }
+.util-items-stretch { align-items: stretch; }
+
+/* Justify content */
+.util-justify-start { justify-content: flex-start; }
+.util-justify-center { justify-content: center; }
+.util-justify-end { justify-content: flex-end; }
+.util-justify-between { justify-content: space-between; }
+.util-justify-around { justify-content: space-around; }
+.util-justify-evenly { justify-content: space-evenly; }
+
+/* Common flex combos */
+.util-flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.util-flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
